@@ -1,1 +1,18 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spotify Widget</title>
+</head>
+<body>
+    <h1>Spotify Playlist Widget</h1>
+    {% if tracks %}
+        <ul>
+            {% for track in tracks %}
+                <li>{{ track }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <a href="/login">Log in to Spotify</a>
+    {% endif %}
+</body>
+</html>
