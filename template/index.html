@@ -5,12 +5,25 @@
 </head>
 <body>
     <h1>Spotify Playlist Widget</h1>
-    {% if tracks %}
-        <ul>
-            {% for track in tracks %}
-                <li>{{ track }}</li>
-            {% endfor %}
-        </ul>
+    {% if token %}
+        <form method="POST" action="/search">
+            <label for="genre">Genre:</label>
+            <input type="text" id="genre" name="genre"><br>
+            <label for="min_bpm">Min BPM:</label>
+            <input type="number" id="min_bpm" name="min_bpm"><br>
+            <label for="max_bpm">Max BPM:</label>
+            <input type="number" id="max_bpm" name="max_bpm"><br>
+            <button type="submit">Search</button>
+        </form>
+        {% if tracks %}
+            <h2>Search Results:</h2>
+            <ul>
+                {% for track in tracks %}
+                    <li>{{ track }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <a href="/logout">Log out</a>
     {% else %}
         <a href="/login">Log in to Spotify</a>
     {% endif %}
